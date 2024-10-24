@@ -1,0 +1,78 @@
+.header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;    
+      background-color: var(--color-secondary);    
+      padding: 1rem 2rem;
+      border-radius:0.5rem;
+    }
+    .header > *:nth-child(1) {
+      justify-self: start;
+      font-size: 1.7rem;
+      color: var(--color-light);
+    }
+    
+    .header > *:nth-child(2) {
+      justify-self: center;
+  
+    }
+    
+    .header > *:nth-child(3) {
+      justify-self: end;
+    }
+ 
+
+ 
+    .header .iconAdmin {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      transition: all 0.5s ease;
+    }
+    .header .iconAdmin:hover {
+      color: var(--color-accent);
+    
+    }
+    .header .shoppingCardIcon {
+      font-size: 1.8rem;
+      background-color: var(--color-primary);
+      text-align: center;
+      color: var(--color-secondary);
+      height: 3.5rem;
+      width: 3.5rem;
+      line-height: 3.5rem;
+      border-radius: 9px;
+      padding: 2px;
+      position: relative;
+    }
+    .header span {
+      font-size: 1rem;
+      width: 2rem;
+      height: 2rem;
+      line-height: 2rem;
+      background-color: #303030;
+      color: var(--color-primary);
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+    .navbar ul{
+      display: flex;
+      gap: 2rem;
+    }
+    .navbar ul li{
+      list-style: none;
+    }
+    .navbar li a {
+      color: #fff;
+      font-size: 1.6rem;
+      transition: all 0.5s ease;
+      font-weight: 300;
+    }
+  
+    .navbar li a:hover {
+      color: var(--color-accent);
+      border-bottom: 1px solid #fff;
+    }
+    
