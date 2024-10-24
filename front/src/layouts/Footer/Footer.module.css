@@ -1,12 +1,11 @@
 .footer {
 
-      text-align: center;
-      background-color: var(--color-secondary);
-      padding: 2rem;
-      color: var(--color-light);
-      font-weight: 600;
-      font-size: 1.5rem;
-      border-radius: 0.5rem;
-      
-    }
-    
+  text-align: center;
+  background-color: var(--color-secondary);
+  padding: 2rem;
+  color: var(--color-light);
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  
+}
