@@ -15,13 +15,13 @@ function Router() {
     <BrowserRouter>
       <Layout>
         <Routes>  
-          <Route index element={<HomePage />} />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/*" element={<NotFoundPage />} />
+          <Route index element={<HomePage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -1,7 +1,12 @@
+import TanstackQueryProvider from "./Providers/TanstackQueryProvider";
 import Router from "./router/Router";
 
 function App() {
-  return  <Router />;
+  return (
+    <TanstackQueryProvider>
+      <Router />;
+    </TanstackQueryProvider>
+  );
 }
 
 export default App;

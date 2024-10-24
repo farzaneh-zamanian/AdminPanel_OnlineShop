@@ -5,11 +5,11 @@ import { RiAdminLine } from "react-icons/ri";
 
 function Header() {
   return (
-    <header className={styles.header}>
+    <header className={styles.headerContainer}>
       <Link to="/">
         <h1>OnlineShop</h1>
       </Link>
-      <nav className={styles.navbar}>
+      <nav className={styles.headerContainer__navbar}>
         <ul>
           <li>
             <NavLink to="/">خانه</NavLink>
@@ -20,7 +20,7 @@ function Header() {
 
         </ul>
       </nav>
-      <Link to="/admin" className={styles.iconAdmin}><RiAdminLine /></Link>
+      <Link to="/admin" className={styles.headerContainer__adminIcon}><RiAdminLine /></Link>
     </header>
   );
 }
