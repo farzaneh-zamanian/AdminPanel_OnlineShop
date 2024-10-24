@@ -1,10 +1,13 @@
+import ModalProvider from "./Providers/ModalContext";
 import TanstackQueryProvider from "./Providers/TanstackQueryProvider";
 import Router from "./router/Router";
 
 function App() {
   return (
     <TanstackQueryProvider>
-      <Router />;
+      <ModalProvider>
+        <Router />;
+      </ModalProvider>
     </TanstackQueryProvider>
   );
 }

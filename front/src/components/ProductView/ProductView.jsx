@@ -3,13 +3,20 @@ import styles from "./ProductView.module.css";
 import { VscTools } from "react-icons/vsc";
 import ProductItem from "../ProductItem/ProductItem";
 import { useProducts } from "../../hooks/queries";
+import useModalContext from "../../hooks/useModalContext";
+import ModalContainer from "../modal/modalContainer/modalContainer";
 
 function ProductView() {
+  const { modalType, openModal } = useModalContext();
+  
+
   const result = useProducts();
-  console.log(result);
   if (result.isPending) {
     return <div>Loading...</div>;
   }
+  if (result.error) {
+    return <div>Error: {result.error.message}</div>;
+}
   // Check if result.data is an array
   if (!Array.isArray(result.data)) {
     return <div>Error: Unable to fetch products.</div>;
@@ -52,6 +59,8 @@ function ProductView() {
           </tbody>
         </table>
       </div>
+      {/* Render the modal conditionally */}
+      {modalType && <ModalContainer />}
     </section>
   );
 }
