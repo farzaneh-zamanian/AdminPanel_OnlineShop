@@ -1,30 +1,80 @@
-import React from "react";
+import React, { useState } from "react";
 import useModalContext from "../../../hooks/useModalContext";
 import styles from "./ModalContent.module.css";
+import { useAddProduct } from "../../../hooks/mutation";
 function AddProductForm() {
+  //CONTEXT
   const { closeModal } = useModalContext();
+  // STATE- FORM
+  const [form, setForm] = useState({
+    ProductName: "",
+    ProductQuantity: "",
+    ProductPrice: "",
+  });
 
-  // ACTION
-  const addProductHandler = () => {
-    console.log("add");
+  //MUTATION
+  const { mutate } = useAddProduct();
+
+  // ACTION - SUBMIT FORM
+  const submitProductHandler = (event) => {
+    event.preventDefault();
+    // Data Structure
+    const formattedData = {
+      name: form.ProductName,
+      quantity: form.ProductQuantity,
+      price: form.ProductPrice,
+  };
+    mutate(formattedData, {
+      onSuccess: (data) => {
+        console.log(data);
+      },
+      onError: (error) => {
+        console.log(error);
+      },
+    });
+  };
+  //ACTION-CHANGE ON INPUT
+  const changeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setForm((form) => ({ ...form, [name]: value }));
   };
 
   return (
-    <form className={styles.containerModal} onSubmit={addProductHandler}>
+    <form className={styles.containerModal} onSubmit={submitProductHandler}>
       <h2 className={styles.containerModal__title}>ایجاد محصول جدید</h2>
       <div className={styles.containerModal__inputsGroup}>
         <div className={styles.containerModal__inputsGroup__input}>
           <label htmlFor="">نام کالا</label>
-          <input type="text" placeholder="نام کالا" />
+          <input
+            type="text"
+            placeholder="نام کالا"
+            name="ProductName"
+            value={form.ProductName}
+            onChange={changeHandler}
+          />
         </div>
 
         <div className={styles.containerModal__inputsGroup__input}>
           <label htmlFor="">تعداد موجودی</label>
-          <input type="text" placeholder="تعداد  " />
+          <input
+            type="text"
+            placeholder="تعداد  "
+            name="ProductQuantity"
+            value={form.ProductQuantity}
+            onChange={changeHandler}
+          />
         </div>
         <div className={styles.containerModal__inputsGroup__input}>
           <label htmlFor="">قیمت </label>
-          <input type="text" placeholder="قیمت " />
+          <input
+            type="text"
+            placeholder="قیمت "
+            name="ProductPrice"
+            value={form.ProductPrice}
+            onChange={changeHandler}
+          />
         </div>
       </div>
       <div className={styles.containerModal__ButtonsGroup}>

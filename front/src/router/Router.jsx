@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Layout from "../layouts/Layout";
 
 import HomePage from "../pages/HomePage/HomePage";
@@ -9,14 +9,30 @@ import ProductsPage from "../pages/ProductsPage/ProductsPage";
 import ProductDetailsPage from "../pages/ProductDetailsPage/ProductDetailsPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
+import { getCookie } from "../utils/cookie";
+
+
+// Route Protection
+const ProtectedRoute = ({ element }) => {
+  const token = getCookie("token");
+  return token ? element : <Navigate to="/login" />;
+};
+
 
 function Router() {
   return (
     <BrowserRouter>
       <Layout>
-        <Routes>  
+        <Routes>
           <Route path="/products/:id" element={<ProductDetailsPage />} />
-          <Route path="/admin" element={<AdminPage />} />
+          {/* <Route
+            path="/admin"
+            element={token ? <AdminPage /> : <Navigate to="/login" />}
+          />  */}
+            <Route
+            path="/admin"
+            element={<ProtectedRoute element={<AdminPage />} />}
+          />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />

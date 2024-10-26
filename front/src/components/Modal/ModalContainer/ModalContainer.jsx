@@ -7,7 +7,6 @@ import EditProductForm from "../ModalContent/EditProductForm";
 
 function ModalContainer() {
   const { modalType, closeModal } = useModalContext();
-  console.log(modalType)
 
   return (
     <div className={styles.containerModal}>
