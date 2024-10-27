@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import useModalContext from "../../../hooks/useModalContext";
 import styles from "./ModalContent.module.css";
 import { useAddProduct } from "../../../hooks/mutation";
-import { useNavigate } from "react-router-dom";
 import { useQueryClient  } from "@tanstack/react-query";
 function AddProductForm() {
   // const navigate = useNavigate();

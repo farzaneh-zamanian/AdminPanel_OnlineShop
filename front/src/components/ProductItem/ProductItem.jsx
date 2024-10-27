@@ -25,13 +25,13 @@ function ProductItem({ product }) {
         </button>
         <button
           className={styles.containerProductInfo__actionBtns__deleteBtn}
-          onClick={() => openModal("delete")}
+          onClick={() => openModal("delete", product.id)}
         >
           <AiTwotoneDelete />
         </button>
       </td>
       {/* Render the modal  */}
-      {modalType && <ModalContainer />}
+      {modalType && <ModalContainer  />}
     </tr>
   );
 }

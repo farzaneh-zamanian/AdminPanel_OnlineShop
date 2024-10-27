@@ -1,11 +1,5 @@
 [
   {
-    "id": "9bafa87d-754a-48c1-ba80-4589d15fc5bc",
-    "name": "string",
-    "price": 100,
-    "quantity": 100
-  },
-  {
     "id": "6fb1dde9-9367-41af-86a4-c76c957d02f7",
     "name": "test8",
     "price": 67,
@@ -28,12 +22,6 @@
     "name": "gg",
     "price": "1",
     "quantity": "1"
-  },
-  {
-    "id": "179caf0d-bb94-43dd-a339-884dd94b65b1",
-    "name": "mm",
-    "price": "11",
-    "quantity": "11"
   },
   {
     "id": "77b06e01-c4f9-46b5-a426-b38e21c16dc2",
