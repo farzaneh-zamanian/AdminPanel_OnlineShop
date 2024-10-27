@@ -27,7 +27,7 @@ const useRegister = () => {
           const response = await api.post("/products", data);
           return response.data; 
       };
-      return useMutation(mutationFn);
+      return useMutation({mutationFn});
   }
 
 export { useRegister,useAddProduct,useLogin }
