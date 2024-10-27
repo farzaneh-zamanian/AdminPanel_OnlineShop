@@ -1,19 +1,7 @@
 [
   {
-    "id": "6fb1dde9-9367-41af-86a4-c76c957d02f7",
-    "name": "test8",
-    "price": 67,
-    "quantity": 56
-  },
-  {
-    "id": "95e4c9d8-95ee-46ab-94bb-3cf8822b799a",
-    "name": "test8",
-    "price": 67,
-    "quantity": 56
-  },
-  {
     "id": "1cb04a8f-60e2-40e8-82cf-5ea505813c88",
-    "name": "test9",
+    "name": "laptop",
     "price": 67,
     "quantity": 56
   },
@@ -25,8 +13,8 @@
   },
   {
     "id": "77b06e01-c4f9-46b5-a426-b38e21c16dc2",
-    "name": "bb",
-    "price": "20",
-    "quantity": "20"
+    "name": "bb22",
+    "price": 20000,
+    "quantity": 20000
   }
 ]

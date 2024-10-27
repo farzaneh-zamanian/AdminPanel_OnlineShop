@@ -19,7 +19,7 @@ function ProductItem({ product }) {
       <td className={styles.containerProductInfo__actionBtns}>
         <button
           className={styles.containerProductInfo__actionBtns__editBtn}
-          onClick={() => openModal("edit")}
+          onClick={() => openModal("edit", product)}
         >
           <FaRegEdit />
         </button>

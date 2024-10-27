@@ -37,7 +37,19 @@ const useDeleteProduct = () => {
     }
     return useMutation({ mutationFn });
 
+}
 
+//PUT - EDIT PRODUCT
+const useUpdateProduct = () => {
+    const mutationFn = async (data) => {
+        console.log("bb",data)
+        const response = await api.put(`/products/${data.id}`, data);
+        return response.data
+    }
+    return useMutation({ mutationFn });
 
 }
-export { useRegister, useLogin, useAddProduct, useDeleteProduct }
+
+
+
+export { useRegister, useLogin, useAddProduct, useDeleteProduct,useUpdateProduct }

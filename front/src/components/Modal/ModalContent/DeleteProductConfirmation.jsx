@@ -4,9 +4,12 @@ import useModalContext from "../../../hooks/useModalContext";
 import { useDeleteProduct } from "../../../hooks/mutation";
 import { useQueryClient } from "@tanstack/react-query";
 
-function DeleteProductConfirmation() {
-  const { closeModal, productId } = useModalContext();
 
+
+
+
+function DeleteProductConfirmation() {
+  const { closeModal, currentProduct } = useModalContext();
   // Get the query client instance
   const queryClient = useQueryClient();
   //MUTATION
@@ -14,7 +17,12 @@ function DeleteProductConfirmation() {
 
   //ACTION  - DELETE PRODUCT
   const deleteHandler = () => {
-    mutate(productId, {
+    if (!currentProduct) {
+      console.error("No current product available for deletion.");
+      return;
+    }
+
+    mutate(currentProduct, {
       onSuccess: () => {
         queryClient.invalidateQueries("/products"); // Assuming 'products' is the query key used in useProducts
         closeModal();
