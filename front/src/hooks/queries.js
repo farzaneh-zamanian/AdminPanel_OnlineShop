@@ -8,8 +8,7 @@ import { api } from "../configs/api";
 
 
 //GET ALL PRODUCTS
-const useGetAllProduct = (page , itemsPerPage ) => {
-  console.log(page)
+const useGetAllProduct = (page ,itemsPerPage ) => {
   const queryKey = ["all-products", page]; 
   
   const queryFn = async () => {

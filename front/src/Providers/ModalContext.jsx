@@ -7,7 +7,7 @@ function ModalProvider({ children }) {
   const [modalType, setModalType] = useState(null);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [filteredSearchedProducts, setFilteredSearchedProducts] = useState([]);
 
   //ACTION- OPEN MODAL
   const openModal = (type, product = null) => {
@@ -29,7 +29,9 @@ function ModalProvider({ children }) {
         openModal,
         closeModal,
         currentPage,
-         setCurrentPage
+        setCurrentPage,
+        filteredSearchedProducts,
+        setFilteredSearchedProducts,
       }}
     >
       {children}

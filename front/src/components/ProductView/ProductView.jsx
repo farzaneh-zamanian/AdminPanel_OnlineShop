@@ -6,16 +6,20 @@ import { useGetAllProduct } from "../../hooks/queries";
 import useModalContext from "../../hooks/useModalContext";
 import ModalContainer from "../modal/modalContainer/modalContainer";
 import { useDeleteAllProducts } from "../../hooks/mutation";
-import { useQueryClient } from "@tanstack/react-query";
 
 function ProductView() {
-  const { modalType, openModal, currentPage, setCurrentPage } =
-    useModalContext();
+  const {
+    modalType,
+    openModal,
+    currentPage,
+    setCurrentPage,
+    filteredSearchedProducts,
+  } = useModalContext();
 
-  const queryClient = useQueryClient();
   //STATE
   const [selectedIds, setSelectedIds] = useState([]);
-
+  const [notification, setNotification] = useState("");
+  
   // MUTATION
   const { mutate } = useDeleteAllProducts();
 
@@ -24,9 +28,6 @@ function ProductView() {
     currentPage,
     setCurrentPage
   );
-
-  //!
-  // console.log(data.totalProducts)
 
   //! must be done
   //ISpENDING
@@ -42,7 +43,6 @@ function ProductView() {
   const deleteAllProductHandler = () => {
     const data = { ids: selectedIds };
 
-    //data must be in object{}
     mutate({ data });
   };
 
@@ -95,7 +95,19 @@ function ProductView() {
             </tr>
           </thead>
           <tbody>
-            {data?.data?.map((product, index) => (
+            {/* {data?.data?.map((product, index) => (
+              <ProductItem
+                key={product.id}
+                product={product}
+                index={index}
+                selectedIds={selectedIds}
+                setSelectedIds={setSelectedIds}
+              />
+            ))} */}
+            {(filteredSearchedProducts.length > 0
+              ? filteredSearchedProducts
+              : data.data
+            ).map((product, index) => (
               <ProductItem
                 key={product.id}
                 product={product}
