@@ -10,14 +10,13 @@ import ProductDetailsPage from "../pages/ProductDetailsPage/ProductDetailsPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
 import { getCookie } from "../utils/cookie";
-
+import AuthProvider from "../Providers/AuthProvider";
 
 // Route Protection
-const ProtectedRoute = ({ element }) => {
+/*const ProtectedRoute = ({ element }) => {
   const token = getCookie("token");
   return token ? element : <Navigate to="/login" />;
-};
-
+};*/
 
 function Router() {
   return (
@@ -25,13 +24,22 @@ function Router() {
       <Layout>
         <Routes>
           <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
           {/* <Route
             path="/admin"
             element={token ? <AdminPage /> : <Navigate to="/login" />}
           />  */}
-            <Route
+          {/* <Route
             path="/admin"
             element={<ProtectedRoute element={<AdminPage />} />}
+          /> */}
+          <Route
+            path="/admin"
+            element={
+              <AuthProvider>
+                <AdminPage />
+              </AuthProvider>
+            }
           />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/login" element={<LoginPage />} />

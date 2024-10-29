@@ -2,38 +2,26 @@ import React from "react";
 import styles from "./ModalContent.module.css";
 import useModalContext from "../../../hooks/useModalContext";
 import { useDeleteProduct } from "../../../hooks/mutation";
-import { useQueryClient } from "@tanstack/react-query";
-
-
-
-
+import { useGetAllProduct } from "../../../hooks/queries";
 
 function DeleteProductConfirmation() {
   const { closeModal, currentProduct } = useModalContext();
-  // Get the query client instance
-  const queryClient = useQueryClient();
+
   //MUTATION
   const { mutate, isLoading } = useDeleteProduct();
+  const { data } = useGetAllProduct();
 
   //ACTION  - DELETE PRODUCT
+
   const deleteHandler = () => {
+    if (data.totalProducts == 1) return;
+
     if (!currentProduct) {
       console.error("No current product available for deletion.");
       return;
     }
-
-    mutate(currentProduct, {
-      onSuccess: () => {
-        queryClient.invalidateQueries("/products"); // Assuming 'products' is the query key used in useProducts
-        closeModal();
-      },
-      onError: (error) => {
-        console.log("ee", error);
-        setErrorMessage("حذف محصول با خطا مواجه شد."); // Example error message
-        console.error("Error details:", error);
-        console.log("Response data:", error.response.data); // Log response data for more context
-      },
-    });
+    mutate(currentProduct);
+    closeModal();
   };
   return (
     <div className={styles.containerDeleteConfirmation}>
