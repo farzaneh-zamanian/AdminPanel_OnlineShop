@@ -36,7 +36,6 @@
   color: var(--color-text);
 }
 .containerProductManagement .containerProductManagement__title button {
-  width: 13.2rem;
   height: 4.5rem;
   font-weight: 400;
   font-size: 1.6rem;
@@ -45,6 +44,7 @@
   line-height: 2.5rem;
   padding: 1rem;
   color: var(--color-light);
+  margin-right: 1rem;
   transition: all 0.5s ease;
 }
 .containerProductManagement .containerProductManagement__title button:hover {
@@ -85,4 +85,7 @@
   font-weight: 400;
   text-align: right;
   vertical-align: middle;
+}
+.containerProductManagement__deleteProBtn{
+  background-color: red;
 }

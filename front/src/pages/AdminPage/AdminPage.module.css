@@ -1,4 +1,13 @@
-.containerAdminPage{
-      margin: 3rem auto;
-      width: 114rem;
+.containerAdminPage {
+  margin: 3rem auto;
+  width: 114rem;
+}
+.notifications {
+  text-align: center;
+  width: 100%;
+  height: 5rem;
+  line-height: 5rem;
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
 }

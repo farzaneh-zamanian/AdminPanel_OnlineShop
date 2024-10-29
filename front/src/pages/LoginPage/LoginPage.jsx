@@ -1,52 +1,52 @@
 import React, { useState } from "react";
 import loginPagestyles from "./LoginPage.module.css";
 import formStyles from "../form.module.css"; //SHARED FOR REGISTER AND LOGIN
-import { useNavigate } from "react-router-dom";
 import { useLogin } from "../../hooks/mutation";
 import { setCookie } from "../../utils/cookie";
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   //STATE -FORM
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
 
-  //NAVIGATE
-  const navigate = useNavigate();
 
   // ACTION - MUTATION
-  // const { mutate } = useRegister();
   const { mutateAsync } = useLogin(); // Use mutateAsync for async/await
 
   //ACTION - ONcHANGE INPUT VALUE
   const changeHandler = (event) => {
     setForm((form) => ({ ...form, [event.target.name]: event.target.value }));
   };
+  const handleClick = () => {
+    navigate('/registration');
+  };
 
   //ACTION- LOGIN SUBMIT
   const loginHandler = async (event) => {
     event.preventDefault();
+ 
 
-    // validation error
     if (!form.username || !form.password)
       return alert("User  or password is necessary");
 
-
     try {
-      const response = await mutateAsync(form); // Use mutateAsync for async/await
-      console.log("Login successful:", response.token); // Access the response data
-     setCookie("token", response?.token);
+      const response = await mutateAsync(form); 
+      console.log("Login successful:", response.token); 
+      setCookie("token", response?.token);
       navigate("/admin");
-      
     } catch (error) {
       console.error(
         "Login failed:",
         error.response?.data?.message || error.message
       );
       alert(
-        "Login failed: " +
-          (error.response?.data?.message || "Unknown error")
+        "Login failed: " + (error.response?.data?.message || "Unknown error")
       );
     }
   };
@@ -80,8 +80,8 @@ function LoginPage() {
         <button className={formStyles.containerLoginPage__entranceBtn}>
           ورود
         </button>
-        <p className={formStyles.containerLoginPage__accountCreation}>
-          ایجاد حساب کاربری؟
+        <p className={formStyles.containerLoginPage__accountCreation}  onClick={handleClick}>
+         ایجاد حساب کاربری؟
         </p>
       </form>
     </main>

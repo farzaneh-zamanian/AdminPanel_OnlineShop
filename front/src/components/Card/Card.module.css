@@ -1,0 +1,80 @@
+.cardContainer {
+      width: 25rem;
+      margin: 1rem;
+      padding: 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .cardContainer img {
+      width: 20rem;
+      height: 23rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .cardContainer h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+    .cardContainer p {
+      color: var(--color-neuter);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1rem 0 3rem;
+    }
+    .actionsContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    
+    }
+    .actionsContainer a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      text-align: center;
+      font-size: 2.2rem;
+     
+      cursor: pointer;
+      color: var(--color-neuter);
+    }
+    .actionsContainer a:hover {
+      color: var(--color-accent);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .actionsContainer div {
+      display: flex;
+      align-items: center;
+    }
+    .actionsContainer div span {
+    
+      text-align: center;
+      margin: 0 1rem;
+    }
+    .actionsContainer div button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      width: 3rem;
+      color: #fff;
+      height: 3rem;
+      line-height: 3.2rem;
+      background-color: #fff;
+      border-radius: 8px;
+      background-color: var(--color-neuter);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    }
+    .actionsContainer div button:hover {
+      background-color: var(--color-accent);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    

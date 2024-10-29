@@ -12,30 +12,11 @@ function RegistrationPage() {
   });
 
   const navigate = useNavigate();
-  // ACTION - MUTATION
-  // some info as mutate back that we destruct it
-  // const { mutate } = useRegister();
-  const { mutateAsync } = useRegister(); // Use mutateAsync for async/await
 
-  //ACTION - SUBMIT
-  // const registerHandler = (event) => {
-  //   event.preventDefault();
-  //   const { username, password, confirmPassword } = form;
-
-  //   // validation error
-  //   if (!form.username || !form.password)
-  //     return alert("user or pass is necessary");
-  //   if (form.password !== form.confirmedPassword)
-  //     return alert("not equal pass");
-  //   mutate({username, password}, {
-  //     onSuccess: (data) => {
-  //       console.log(data);
-  //     },
-  //     onError: (error) => {
-  //       console.log(error.response.data.message);
-  //     },
-  //   });
-  // };
+  const { mutateAsync } = useRegister();
+  const clickHandler = () => {
+    navigate("/login");
+  };
 
   const registerHandler = async (event) => {
     event.preventDefault();
@@ -106,7 +87,10 @@ function RegistrationPage() {
         >
           ثبت نام
         </button>
-        <p className={formStyles.containerLoginPage__accountCreation}>
+        <p
+          onClick={clickHandler}
+          className={formStyles.containerLoginPage__accountCreation}
+        >
           حساب کاربردی دارید؟
         </p>
       </form>

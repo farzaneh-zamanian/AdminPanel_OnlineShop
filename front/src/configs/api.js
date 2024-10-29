@@ -4,9 +4,9 @@ import { getCookie } from "../utils/cookie";
 
 //API
 const api = axios.create({
-      baseURL: import.meta.env.VITE_BASE_URL, // Base URL for the API
+      baseURL: import.meta.env.VITE_BASE_URL,
       headers: {
-            "Content-Type": "application/json" // Default Content-Type
+            "Content-Type": "application/json" 
       }
 })
 

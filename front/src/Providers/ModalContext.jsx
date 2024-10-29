@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createContext, useState } from "react";
 export const ModalContext = createContext();
 
@@ -8,6 +8,17 @@ function ModalProvider({ children }) {
   const [currentProduct, setCurrentProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredSearchedProducts, setFilteredSearchedProducts] = useState([]);
+  const [notification, setNotification] = useState("");
+
+  // CLEAR NOTIFICATION
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        setNotification("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification, setNotification]);
 
   //ACTION- OPEN MODAL
   const openModal = (type, product = null) => {
@@ -32,6 +43,8 @@ function ModalProvider({ children }) {
         setCurrentPage,
         filteredSearchedProducts,
         setFilteredSearchedProducts,
+        notification,
+        setNotification,
       }}
     >
       {children}

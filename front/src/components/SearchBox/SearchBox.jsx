@@ -7,8 +7,9 @@ import useModalContext from "../../hooks/useModalContext";
 function SearchBox() {
   //STATE
   const [search, setSearch] = useState("");
-  const { filteredSearchedProducts, setFilteredSearchedProducts } =
-    useModalContext();
+  const {
+    setFilteredSearchedProducts,setNotification
+  } = useModalContext();
   //DATA
   const { data } = useGetAllProduct();
 
@@ -18,9 +19,14 @@ function SearchBox() {
       const results = data.data.filter((product) =>
         product.name.toLowerCase().trim().includes(search.toLowerCase().trim())
       );
-      if(results) setFilteredSearchedProducts(results);
+      if (results.length > 0) {
+        setFilteredSearchedProducts(results);
+        setNotification(""); // Clear notification if results found
+      } else {
+        setNotification("No results found");
+      }
     } else {
-      console.log("not found");
+      setNotification("Data not found");
     }
   };
   return (

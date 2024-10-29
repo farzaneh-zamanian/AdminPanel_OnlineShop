@@ -12,15 +12,13 @@ function Header() {
       <nav className={styles.headerContainer__navbar}>
         <ul>
           <li>
-            <NavLink to="/">خانه</NavLink>
-          </li>
-          <li>
             <NavLink to="products">محصولات</NavLink>
           </li>
-
         </ul>
       </nav>
-      <Link to="/admin" className={styles.headerContainer__adminIcon}><RiAdminLine /></Link>
+      <Link to="/admin" className={styles.headerContainer__adminIcon}>
+        <RiAdminLine />
+      </Link>
     </header>
   );
 }

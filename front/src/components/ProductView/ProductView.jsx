@@ -14,12 +14,12 @@ function ProductView() {
     currentPage,
     setCurrentPage,
     filteredSearchedProducts,
+    setNotification,
   } = useModalContext();
 
   //STATE
   const [selectedIds, setSelectedIds] = useState([]);
-  const [notification, setNotification] = useState("");
-  
+
   // MUTATION
   const { mutate } = useDeleteAllProducts();
 
@@ -29,15 +29,13 @@ function ProductView() {
     setCurrentPage
   );
 
-  //! must be done
-  //ISpENDING
+  //ISPENDING
   if (isPending) {
-    return <div>Loading...</div>;
+    return setNotification("..is panding..");
   }
   //ERROR
-  //! must be done
   if (error) {
-    return <div>Error- something went wrong: {error.message}</div>;
+    return setNotification(error.message);
   }
 
   const deleteAllProductHandler = () => {
@@ -48,7 +46,7 @@ function ProductView() {
 
   // CHECK IF THE DATA.DATA IS AN ARRAY
   if (!Array.isArray(data.data)) {
-    return <div>Error: Unable to fetch products.</div>;
+    return setNotification("unable to fetch products");
   }
 
   //UI
@@ -62,18 +60,21 @@ function ProductView() {
           </span>
           <span>مدیریت کالا</span>
         </p>
-        <button
-          className={styles.containerProductManagement__createProBtn}
-          onClick={() => openModal("add")}
-        >
-          افزودن محصول
-        </button>
-        <button
-          onClick={deleteAllProductHandler}
-          disabled={selectedIds.length === 0}
-        >
-          حذف محصولات انتخاب شده
-        </button>
+        <div>
+          <button
+            className={styles.containerProductManagement__createProBtn}
+            onClick={() => openModal("add")}
+          >
+            افزودن محصول
+          </button>
+          <button
+            className={styles.containerProductManagement__deleteProBtn}
+            onClick={deleteAllProductHandler}
+            disabled={selectedIds.length === 0}
+          >
+            حذف محصولات انتخاب شده
+          </button>
+        </div>
       </div>
       {/* LIST OF PRODUCTS */}
       <div className={styles.containerProductManagement__list}>
@@ -83,9 +84,7 @@ function ProductView() {
         >
           <thead>
             <tr>
-              <th>
-                <input type="checkbox" />
-              </th>
+              <th></th>
               <th>شماره</th>
               <th>نام کالا</th>
               <th>موجودی</th>
